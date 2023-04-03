@@ -1,21 +1,36 @@
 import React from 'react'
 
 
-const CityWeatherList = ({ cityList }) => {
+const CityWeatherList = ({ cityList, citySelectInList }) => {
+    
+    const handleCitySelect = (city) => {
+        citySelectInList(city)
+        console.log({ciudadSelecionada:city});
+    }
+    //    const indexCity = cityList?.map((city,index) => {
+    //         return(
 
- 
-   const indexCity = cityList?.map((city,index) => {
-        return(
-        //    <li>{index}</li>   
-         <li key={index} >{cityList?.[index].state}</li> 
-           )
-    })
-    console.log(indexCity);
-     console.log(cityList);
+    //          <li key={index} >{cityList?.[index].state}</li> 
+    //            )
+    // })
+    // console.log(indexCity);
+    console.log({listaDeCiudades:cityList});
+    // console.log(citySelectInList);
+
+
     return (
         <ul>
-        {/* <li>{cityList?.[{indexCity}].state}</li> */}
-        <li>{indexCity}</li>
+            {
+                cityList?.map((city, index) => {
+                   
+                    return (
+                        <li key={index} >{cityList?.[index].state}
+                            <button onClick={() => handleCitySelect(city) }>Select city</button>
+                        </li>
+                    )
+                })
+            }
+            {/* <li>{indexCity}</li> */}
         </ul>
     )
 }

@@ -13,8 +13,9 @@ function App() {
   const [temperature, setTemperature] = useState()
   const [inputCity, setInputCity] = useState()
   const [cityList, setCityList] = useState()
-  console.log(cityList);
-  
+  // const [citySelect, setCitySelect] = useState(null)
+  console.log({ cordenadasiniciales: latlon });
+
   useEffect(() => {
     const success = pos => {
       const cardinalPoints = {
@@ -51,30 +52,30 @@ function App() {
 
   useEffect(() => {
     if (inputCity) {
-    const apiKey = "90a6ccdbd9699098bb70d55789023e85"
-    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${inputCity}&limit=5&appid=${apiKey}`
-   
+      const apiKey = "90a6ccdbd9699098bb70d55789023e85"
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${inputCity}&limit=5&appid=${apiKey}`
+
       axios.get(url)
         .then(res => {
-const arrayCitys=res.data
+          const arrayCitys = res.data
           setCityList(arrayCitys)
 
-          arrayCitys.forEach(city => {
-            const cardinalPoints = {
-              name:city.name,
-              state: city.state,
-              country: city.country,
-              lat: city.lat,
-              lon: city.lon
-            }
-            setLatlon(cardinalPoints)
-          console.log(arrayCitys);
+          // arrayCitys.forEach(city => {
+          //   const cardinalPoints = {
+          //     name: city.name,
+          //     state: city.state,
+          //     country: city.country,
+          //     lat: city.lat,
+          //     lon: city.lon
+          //   }
+          //   setLatlon(cardinalPoints)
+          //   console.log(arrayCitys);
 
-            console.log(cardinalPoints);
-          });
+          //   console.log(cardinalPoints);
+          // });
 
         })
-        .catch()
+        .catch(err => console.log(err))
     }
 
   }, [inputCity])
@@ -82,8 +83,20 @@ const arrayCitys=res.data
   const handleSubmit = event => {
     event.preventDefault()
     setInputCity(event.target.inputCity.value.toLowerCase().trim())
-    console.log(inputCity);
+    event.target.inputCity.value = ""
+    console.log({ ciudadBuscada: inputCity });
   }
+
+
+  const citySelectInList = (city) => {
+    const cardinalPoints = {
+      lat: city.lat,
+      lon: city.lon
+    }
+    setLatlon(cardinalPoints)
+    console.log({ actualizacionCordenadas: cardinalPoints });
+  }
+
 
   return (
     <div className="App">
@@ -93,16 +106,42 @@ const arrayCitys=res.data
         <button>Search city</button>
       </form>
 
-{
-   inputCity
-     ? <CityWeatherList cityList={cityList}/>
-    :<WeatherCard 
-    weather={weather}
-    temperature={temperature}
+      {
+        inputCity
+          ?  <CityWeatherList
+              cityList={cityList}
+              citySelectInList={citySelectInList}
 
-    />
-  }
+            />
+          : <WeatherCard
+            weather={weather}
+            temperature={temperature}
 
+          />
+      }
+
+
+
+      {/* {
+        inputCity
+          ? citySelectInList
+            ? <WeatherCard
+              weather={weather}
+              temperature={temperature}
+
+            />
+            : <CityWeatherList
+              cityList={cityList}
+              citySelectInList={citySelectInList}
+
+            />
+          : <WeatherCard
+            weather={weather}
+            temperature={temperature}
+
+          />
+      }
+ */}
 
       {/* {
         weather
