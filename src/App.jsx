@@ -13,7 +13,7 @@ function App() {
   const [temperature, setTemperature] = useState()
   const [inputCity, setInputCity] = useState()
   const [cityList, setCityList] = useState()
-  // const [citySelect, setCitySelect] = useState(null)
+   const [citySelect, setCitySelect] = useState(null)
   console.log({ cordenadasiniciales: latlon });
 
   useEffect(() => {
@@ -89,13 +89,23 @@ function App() {
 
 
   const citySelectInList = (city) => {
-    const cardinalPoints = {
-      lat: city.lat,
-      lon: city.lon
-    }
-    setLatlon(cardinalPoints)
-    console.log({ actualizacionCordenadas: cardinalPoints });
+    
+    setCitySelect(city)
+   
   }
+
+  useEffect(() => {
+    if(citySelect){
+      const cardinalPoints = {
+        lat: citySelect.lat,
+        lon: citySelect.lon
+      }
+    setLatlon(cardinalPoints)
+      setInputCity(false)
+      console.log({ actualizacionCordenadas: cardinalPoints })
+
+    }
+  }, [citySelect])
 
 
   return (

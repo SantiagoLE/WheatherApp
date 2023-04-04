@@ -22,10 +22,12 @@ const CityWeatherList = ({ cityList, citySelectInList }) => {
         <ul>
             {
                 cityList?.map((city, index) => {
-                   
+                   const name =cityList?.[index].name
+                   const state = cityList?.[index].state
+                   const country = cityList?.[index].country
                     return (
-                        <li key={index} >{cityList?.[index].state}
-                            <button onClick={() => handleCitySelect(city) }>Select city</button>
+                        <li key={index} >
+                            <button onClick={() => handleCitySelect(city) }>{name} - { state ? `${state},`:"" } {country} </button>
                         </li>
                     )
                 })
