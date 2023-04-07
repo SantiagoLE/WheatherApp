@@ -1,21 +1,16 @@
 import React from 'react'
+import getRandomArray from '../utils/getRandomArray'
 
 
-const CityWeatherList = ({ cityList, citySelectInList }) => {
+const CityWeatherList = ({ cityList, citySelectInList, setNumberBackground }) => {
     
     const handleCitySelect = (city) => {
         citySelectInList(city)
-        console.log({ciudadSelecionada:city});
+        setNumberBackground(getRandomArray([1,2,3,4]))
+        
     }
-    //    const indexCity = cityList?.map((city,index) => {
-    //         return(
-
-    //          <li key={index} >{cityList?.[index].state}</li> 
-    //            )
-    // })
-    // console.log(indexCity);
-    console.log({listaDeCiudades:cityList});
-    // console.log(citySelectInList);
+  
+    // console.log({listaDeCiudades:cityList});
 
 
     return (

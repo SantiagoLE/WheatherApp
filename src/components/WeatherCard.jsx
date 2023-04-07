@@ -1,28 +1,26 @@
 import React, { useState } from 'react'
 
-const WeatherCard = ({ weather, temperature }) => {
+const WeatherCard = ({ weather, citySelect, temperature }) => {
 
     const [isCelsius, setisCelsius] = useState(true)
-
 
     const handleChangeTemperature = () => {
         setisCelsius(!isCelsius)
     }
-// console.log(weather);
+
     return (
-        <article>
-            <h1>Weather App</h1>
-            <h2>{weather?.name}, {weather?.sys.country}</h2>
+        <article className='cardWeather'>
+            <h1>{ citySelect ? citySelect?.name  : weather?.name }  {citySelect?.state ? `- ${citySelect?.state}` : "" }, {citySelect ? citySelect?.country : weather?.sys.country}</h1>
             <section>
                 <header>
-                    <img src={` https://openweathermap.org/img/wn/${weather?.weather[0].icon}@4x.png`} alt="" />
+                    <img className='imageClima' src={` https://openweathermap.org/img/wn/${weather?.weather[0].icon}@4x.png`} alt="" />
                 </header>
                 <article>
-                    <h3>{weather?.weather[0].description}</h3>
-                    <ul>
-                        <li><span>win Speed</span>{weather?.wind.speed}m/s</li>
-                        <li><span>Clouds</span>{weather?.clouds.all}%</li>
-                        <li><span>Presure</span>{weather?.main.pressure}hpa</li>
+                    <h2>{weather?.weather[0].description}</h2>
+                    <ul className='weather_Info'>
+                        <li><span>win Speed  </span>{weather?.wind.speed}m/s</li>
+                        <li><span>Clouds  </span>{weather?.clouds.all}%</li>
+                        <li><span>Presure  </span>{weather?.main.pressure}hpa</li>
                     </ul>
                 </article>
             </section>

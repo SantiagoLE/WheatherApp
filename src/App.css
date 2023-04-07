@@ -1,3 +1,90 @@
 .App{
-    background-color: red;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hidden_error{
+    opacity: 0;
+}
+
+.view_error{
+    opacity: 1;
+}
+
+ .loading_content{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loading_svg{
+    overflow: hidden;
+    width: 50%;
+    max-width: 200px;
+    height: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  } 
+
+#inputCity{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    color: white;
+}
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.cardWeather{
+    margin-top: 10px;
+    padding: 1rem;
+    max-width: 700px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.633);
+    text-align: center;
+   
+}
+
+h1{
+    text-align: center;
+}
+.imageClima{
+    animation: rotate 4s linear infinite;
+
+}
+
+  @keyframes rotate {
+    0% {
+      transform: rotateY(0deg);
+    }
+  
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+
+ul{
+    list-style-type:none;
+    align-items: baseline;
+}
+
+.weather_Info{
+    align-self: baseline;
 }
