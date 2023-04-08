@@ -20,13 +20,10 @@ function App() {
     const [classError, setClassError] = useState(false)
     const [hasEmptyCity, setHasEmptyCity] = useState(false)
     const [geolocationError, setGeolocationError] = useState()
-    const [numberBackground, setNumberBackground] = useState(getRandomArray([1,2,3,4]))
-    console.log(numberBackground);
+    const [numberBackground, setNumberBackground] = useState(getRandomArray([1, 2, 3, 4, 5, 6, 7]))
 
-    
 
-    
-    useEffect(() => {
+ useEffect(() => {
         const success = pos => {
             const cardinalPoints = {
                 lat: pos.coords.latitude,
@@ -34,7 +31,6 @@ function App() {
 
             }
             setGeolocationError(false)
-            console.log(cardinalPoints);
             setLatlon(cardinalPoints)
         }
         const error = err => {
@@ -57,8 +53,6 @@ function App() {
 
                     setTemperature({ celsius, fahrenheit })
                     setWeather(res.data)
-                    // setWeather(false)
-                    console.log(res.data);
                 })
                 .catch(err => console.log(err))
         }
@@ -82,7 +76,6 @@ function App() {
                         setHasError(false)
                     }
                     setCityList(arrayCitys)
-                    console.log(res);
 
                 })
 
@@ -99,17 +92,8 @@ function App() {
             }
             setLatlon(cardinalPoints)
             setInputCity(false)
-            console.log({ actualizacionCordenadas: cardinalPoints })
-
         }
     }, [citySelect])
-
-
-
-
-    console.log(hasError);
-    console.log(cityList);
-    console.log(cityList?.length);
 
 
     const handleSubmit = event => {
@@ -117,38 +101,22 @@ function App() {
 
         if (event.target.inputCity.value.toLowerCase().trim() === "") {
             setHasEmptyCity("true")
+
             setTimeout(() => {
                 setHasEmptyCity(false)
             }, 3000);
         } else {
-            // if (arrayCitys?.length < 1) {
-            //             setHasError(true)
-            //             setClassError(true)
-            //             setTimeout(() => {
-            //                 setClassError(false)
-            //             }, 3000);
-            //         } else {
-            //             setHasError(false)
-            //         }
-
 
             setInputCity(event.target.inputCity.value.toLowerCase().trim())
-
             event.target.inputCity.value = ""
-
-
         }
 
 
 
     }
 
-    console.log({ ciudadBuscada: inputCity });
-
     const citySelectInList = (city) => {
-
         setCitySelect(city)
-        console.log(citySelect);
         setCityList([])
     }
 
@@ -162,99 +130,56 @@ function App() {
 
 
 
-    
     return (
         <div className="App" style={geolocationError ? backGroundGeolocation : backgroundsApp}>
+
             {
                 geolocationError
-                ?
-""
-                : weather
-                    ? <>
+                    ? <div className='geolocation_error'>
+                        <p>¡ Please allow access to the location !</p>
 
-                        <form onSubmit={handleSubmit}>
-                            <input id='inputCity' type="entrar" placeholder="Enter a city" />
-                            <button className='buttonSearch' >Search city</button>
-                        </form>
+                    </div>
+                    : weather
+                        ? <>
+                            <form onSubmit={handleSubmit} className='form'>
+                                <input id='inputCity' type="text" placeholder="Enter a city" />
+                                <button className='buttonSearch' >Search city</button>
+                            </form>
 
-                        {
-                            hasEmptyCity
-                                ? <p>Please enter a city</p>
-                                : hasError
-                                    ? <p className={classError ? "view_error" : "hidden_error"} style={{color:"white"}} >The searched city does not exist</p>
-                                    : <p> <br /> </p>
-                        }
-                        {
-                            inputCity
-                                ? hasError
-                                    ? <>
+                            {
+                                hasEmptyCity
+                                    ? <p>Please enter a city</p>
+                                    : hasError
+                                        ? <p className={classError ? "view_error" : "hidden_error"} >The searched city does not exist</p>
+                                        : <p> <br /> </p>
+                            }
+                            {
+                                inputCity
+                                    ? hasError
+                                        ? <>
 
-                                        <WeatherCard
-                                            weather={weather}
-                                            citySelect={citySelect}
-                                            temperature={temperature}
+                                            <WeatherCard
+                                                weather={weather}
+                                                citySelect={citySelect}
+                                                temperature={temperature}
+                                            />
+                                        </>
+                                        : <CityWeatherList
+                                            cityList={cityList}
+                                            citySelectInList={citySelectInList}
+                                            setNumberBackground={setNumberBackground}
                                         />
-                                    </>
-                                    : <CityWeatherList
-                                        cityList={cityList}
-                                        citySelectInList={citySelectInList}
-                                        setNumberBackground={setNumberBackground}
+
+                                    : <WeatherCard
+                                        weather={weather}
+                                        citySelect={citySelect}
+                                        temperature={temperature}
+
                                     />
-
-                                :
-                                <WeatherCard
-                                    weather={weather}
-                                    citySelect={citySelect}
-                                    temperature={temperature}
-
-                                />
-                        }
-                    </>
-                    : <Loading />
+                            }
+                        </>
+                        : <Loading/>
             }
-
-
-
-
-
-
-
-
-
-
-
-            {/* {
-        inputCity
-          ? citySelectInList
-            ? <WeatherCard
-              weather={weather}
-              temperature={temperature}
-
-            />
-            : <CityWeatherList
-              cityList={cityList}
-              citySelectInList={citySelectInList}
-
-            />
-          : <WeatherCard
-            weather={weather}
-            temperature={temperature}
-
-          />
-      }
- */}
-
-            {/* {
-        weather
-          ?
-
-          <WeatherCard
-            weather={weather}
-            temperature={temperature}
-          />
-          : <Loading />
-      } */}
-
         </div>
     )
 }
