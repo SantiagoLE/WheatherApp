@@ -18,7 +18,7 @@ const WeatherCard = ({ weather, citySelect, temperature }) => {
                 <article>
                     <h2>{weather?.weather[0].description}</h2>
                     <ul className='weather_info'>
-                        <li>Win speed:  <span>{weather?.wind.speed}m/s</span></li>
+                        <li>Wind speed:  <span>{weather?.wind.speed}m/s</span></li>
                         <li>Clouds:  <span>{weather?.clouds.all}%</span></li>
                         <li>Presure:  <span>{weather?.main.pressure}hpa</span></li>
                     </ul>
