@@ -91,7 +91,8 @@ button {
 .weather_card {
     margin-top: 10px;
     padding: 1rem;
-    width: var(--width_cards);
+    min-width: var(--width_cards);
+max-width: 400px;
     min-height: var(--height_cards);
     border-radius: 10px;
     color: black;
@@ -154,7 +155,8 @@ li>span {
 .city_weather-list {
     margin-top: 10px;
     padding: 1rem;
-    width: var(--width_cards);
+      min-width: var(--width_cards);
+max-width: 400px;
     min-height: var(--height_cards);
     text-align: center;
 
