@@ -92,7 +92,7 @@ button {
     margin-top: 10px;
     padding: 1rem;
     width: var(--width_cards);
-    height: var(--height_cards);
+    min-height: var(--height_cards);
     border-radius: 10px;
     color: black;
     background-color: var(--bg_card);
@@ -155,7 +155,7 @@ li>span {
     margin-top: 10px;
     padding: 1rem;
     width: var(--width_cards);
-    height: var(--height_cards);
+    min-height: var(--height_cards);
     text-align: center;
 
 }
