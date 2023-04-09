@@ -161,8 +161,6 @@ li>span {
     max-width: var(--max_width-cards);
     min-height: var(--min_height-cards);
     text-align: center;
-
-
 }
 
 .city_list {
@@ -179,3 +177,4 @@ li>span {
     max-width: var(--max_width-cards);
     font-size: 1rem;
 }
+

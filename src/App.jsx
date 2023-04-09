@@ -52,7 +52,7 @@ function App() {
                     const fahrenheit = (celsius * (9 / 5) + 32).toFixed(1)
 
                     setTemperature({ celsius, fahrenheit })
-                    setWeather(res.data)
+                     setWeather(res.data)
                 })
                 .catch(err => console.log(err))
         }

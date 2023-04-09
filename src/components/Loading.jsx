@@ -19,7 +19,7 @@ const Loading = () => {
         viewBox="0 0 38 38"
         preserveAspectRatio="xMinYMin meet"
       >
-        <text alin fontSize="20%" fontWeight="900" x="12" y="21" fill="#859900">LOADING...
+        <text alin fontSize="27%" fontWeight="900" x="8" y="21" fill="red" stroke="black" strokeWidth="0.3" >LOADING...
           <animate
             attributeName="opacity"
             fill='#859900'
