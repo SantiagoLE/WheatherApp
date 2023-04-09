@@ -92,7 +92,7 @@ button {
     margin-top: 10px;
     padding: 1rem;
     min-width: var(--width_cards);
-max-width: 400px;
+max-width: 350px;
     min-height: var(--height_cards);
     border-radius: 10px;
     color: black;
@@ -156,7 +156,7 @@ li>span {
     margin-top: 10px;
     padding: 1rem;
       min-width: var(--width_cards);
-max-width: 400px;
+max-width: 350px;
     min-height: var(--height_cards);
     text-align: center;
 
