@@ -23,20 +23,21 @@ function App() {
     const [numberBackground, setNumberBackground] = useState(getRandomArray([1, 2, 3, 4, 5, 6, 7]))
 
 
- useEffect(() => {
+
+    useEffect(() => {
         const success = pos => {
             const cardinalPoints = {
                 lat: pos.coords.latitude,
                 lon: pos.coords.longitude
-
             }
             setGeolocationError(false)
             setLatlon(cardinalPoints)
         }
         const error = err => {
             console.log(err);
-            setGeolocationError(true)
+            setGeolocationError(true) 
         }
+
         navigator.geolocation.getCurrentPosition(success, error)
 
     }, [])
@@ -52,7 +53,7 @@ function App() {
                     const fahrenheit = (celsius * (9 / 5) + 32).toFixed(1)
 
                     setTemperature({ celsius, fahrenheit })
-                     setWeather(res.data)
+                    setWeather(res.data)
                 })
                 .catch(err => console.log(err))
         }
@@ -178,7 +179,7 @@ function App() {
                                     />
                             }
                         </>
-                        : <Loading/>
+                        : <Loading />
             }
         </div>
     )

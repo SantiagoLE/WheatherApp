@@ -131,7 +131,6 @@ button {
     list-style-type: none;
     text-align: start;
     padding: 0;
-
 }
 
 .weather_info>li {
@@ -177,4 +176,3 @@ li>span {
     max-width: var(--max_width-cards);
     font-size: 1rem;
 }
-
