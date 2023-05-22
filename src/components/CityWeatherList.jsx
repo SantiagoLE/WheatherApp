@@ -1,6 +1,6 @@
 import React from 'react'
 import getRandomArray from '../utils/getRandomArray'
-
+import "./styles/citiWeatherList.css"
 
 const CityWeatherList = ({ cityList, citySelectInList, setNumberBackground }) => {
 

@@ -35,7 +35,7 @@ function App() {
         }
         const error = err => {
             console.log(err);
-            setGeolocationError(true) 
+            setGeolocationError(true)
         }
 
         navigator.geolocation.getCurrentPosition(success, error)
@@ -140,6 +140,7 @@ function App() {
                         <p>¡ Please allow access to the location !</p>
 
                     </div>
+
                     : weather
                         ? <>
                             <form onSubmit={handleSubmit} className='form'>

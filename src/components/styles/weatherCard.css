@@ -1,0 +1,32 @@
+.weather_card {
+    margin-top: 10px;
+    padding: 1rem;
+    min-width: var(--min_width-cards);
+    max-width: var(--max_width-cards);
+    border-radius: 10px;
+    color: black;
+    background-color: var(--bg_card);
+    text-align: center;
+    box-shadow: 10px 7px 10px 0px rgba(0, 0, 0, 0.59);
+
+}
+
+.weather_card-title {
+    font-size: 2rem;
+}
+
+.imageClima {
+    margin: 0 auto;
+    animation: rotate 4s linear infinite;
+
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}

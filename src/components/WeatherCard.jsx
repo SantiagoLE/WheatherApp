@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./styles/weatherCard.css"
 
 const WeatherCard = ({ weather, citySelect, temperature }) => {
 
@@ -12,7 +13,7 @@ const WeatherCard = ({ weather, citySelect, temperature }) => {
         <article className='weather_card'>
             <h1 className='weather_card-title'>{citySelect ? citySelect?.name : weather?.name}  {citySelect?.state ? `- ${citySelect?.state}` : ""}, {citySelect ? citySelect?.country : weather?.sys.country}</h1>
             <section>
-                <header>
+                <header className='header'>
                     <img className='imageClima' src={` https://openweathermap.org/img/wn/${weather?.weather[0].icon}@4x.png`} alt="" />
                 </header>
                 <article>

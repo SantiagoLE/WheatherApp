@@ -1,0 +1,23 @@
+.city_weather-list {
+    margin-top: 10px;
+    padding-top: 1rem;
+    min-width: var(--min_width-cards);
+    max-width: var(--max_width-cards);
+    min-height: var(--min_height-cards);
+    text-align: center;
+}
+
+.city_list {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 0;
+    list-style-type: none;
+}
+
+.city_list>li>button {
+    min-width: var(--min_width-cards);
+    /* max-width: var(--max_width-cards); */
+    font-size: 1rem;
+}

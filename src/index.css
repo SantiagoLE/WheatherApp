@@ -7,3 +7,13 @@ img{
     width: 100%;
     display: block;
 }
+
+body{
+    height: 100%;
+}
+
+:root {
+    --bg_card: rgba(184, 202, 210, 0.633);
+    --min_width-cards: 280px;
+    --max_width-cards: 350px;
+}
